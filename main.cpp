@@ -44,10 +44,11 @@ void test_FC(int scratch_space){
     TNameList inputs = {"A", "B", "C", "bshift", "oshift", "scratch"};
     TNameList outputs = {"out"};
   
-    ctx.push_static(hold(new FullyConnectedLayerCmsisOp()), "FcOp", inputs, outputs);
+    ctx.push_static(hold(new FullyConnectedLayerCmsisOp<T1,T2,T3>()), "FcOp", inputs, outputs);
     ctx.eval();
 
 }
+
 int main(){
     ON_ERR(bd.init(), "SDBlockDevice init ");
     ON_ERR(fs.mount(&bd), "Mounting the filesystem on \"/fs\". ");
