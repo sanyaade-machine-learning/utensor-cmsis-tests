@@ -53,5 +53,6 @@ int main(){
     ON_ERR(bd.init(), "SDBlockDevice init ");
     ON_ERR(fs.mount(&bd), "Mounting the filesystem on \"/fs\". ");
 
+    test_FC<q7_t, q7_t, q7_t>(2);
 
 }
