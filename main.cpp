@@ -98,10 +98,14 @@ void do_softmax(T1 x){
     const T1* out_1 = out->read<T1>(0, 0);
     // Should be [24]
     //           [47]
-    printf("[%d]\n\r", out_1[0]);
-    printf("[%d]\n\r", out_1[1]);
-    printf("[%d]\n\r", out_1[2]);
-    printf("[%d]\n\r", out_1[3]);
+    T1 sum = 0;
+    for(int i = 0; i < 4; i++)
+        sum += out_1[i];
+
+    printf("[%f]\n\r", (float)out_1[0]/((float) sum));
+    printf("[%f]\n\r", (float)out_1[1]/((float) sum));
+    printf("[%f]\n\r", (float)out_1[2]/((float) sum));
+    printf("[%f]\n\r", (float)out_1[3]/((float) sum));
 
 }
 void test_softmax(){
